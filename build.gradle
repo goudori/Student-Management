@@ -1,30 +1,58 @@
-plugins {
-	id 'java'
-	id 'war'
-	id 'org.springframework.boot' version '3.3.4'
-	id 'io.spring.dependency-management' version '1.1.6'
-}
-
-group = 'raisetech'
-version = '0.0.1-SNAPSHOT'
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+	plugins {
+		id 'org.springframework.boot' version '3.3.4'
+		id 'io.spring.dependency-management' version '1.1.6'
+		id 'java'
+		id 'war'
 	}
-}
 
-repositories {
-	mavenCentral()
-}
+	group = 'raisetech'
+	version = '0.0.1-SNAPSHOT'
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(21)
+		}
+	}
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		implementation 'org.apache.commons:commons-lang3:3.17.0'
+		providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	}
+
+	tasks.named('test') {
+		useJUnitPlatform()
+	}
+
+	// ApacheをGradleでインストールするための設定
+	configurations {
+		apache
+	}
+
+	dependencies {
+		apache 'org.apache.httpcomponents:httpclient:4.5.13'
+	}
+
+	// Apacheを起動するためのタスク
+	task startApache(type: Exec) {
+		workingDir './'
+		commandLine '/path/to/apachectl', 'start'
+	}
+
+	// Apacheを停止するためのタスク
+	task stopApache(type: Exec) {
+		workingDir './'
+		commandLine 'gradle', 'apacheStop'
+	}
+
+	// Apacheを再起動するためのタスク
+	task restartApache(type: Exec) {
+		workingDir './'
+		commandLine 'gradle', 'apacheRestart'
+	}
