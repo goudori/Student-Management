@@ -17,3 +17,4 @@
 
 # 4.$ curl -X POST -d  'name=value'  http://localhost:8080/returnの結果
 
+ feature/get-post
