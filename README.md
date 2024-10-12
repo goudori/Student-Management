@@ -1,1 +1,3 @@
-「Spring initializr」を使って、Spring Bootで、初めて、Hello Worldと表示しました。
+学生情報を管理するアプリです。
+
+curlコマンドを使って、学生の名前と年齢を作成や表示をします。
