@@ -19,11 +19,16 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.apache.commons:commons-lang3:3.17.0'
+        providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+        //	MySQLのドライバー
+        runtimeOnly 'com.mysql:mysql-connector-j'
+    //	MyBatis
+        implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.3'
+    }
 
 tasks.named('test') {
 	useJUnitPlatform()
