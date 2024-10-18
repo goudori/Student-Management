@@ -1,3 +1,4 @@
+
 # ✅SpringBootのGETの使い方
 
 # 1.public class Applicationを実行する
@@ -18,3 +19,8 @@
 # 4.$ curl -X POST -d  'name=value'  http://localhost:8080/returnの結果
 
  feature/get-post
+ 
+学生情報を管理するアプリです。
+
+curlコマンドを使って、学生の名前と年齢を作成や表示をします。
+feature/student-info
